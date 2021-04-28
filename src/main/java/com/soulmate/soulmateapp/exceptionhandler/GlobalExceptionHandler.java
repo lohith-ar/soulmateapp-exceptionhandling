@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = UserDoesNotExistsException.class)
     public ResponseEntity<String> userDoesnotExist(){
-        return new ResponseEntity<String>(message2, HttpStatus.OK);
+        return new ResponseEntity<String>(message2, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

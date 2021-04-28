@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void deleteUser(int id) throws UserDoesNotExistsException {
         Optional<SoulmateUser> user1= userrepo.findById(id);
-        if(user1 == null){
+        if(!user1.isPresent()){
             throw new UserDoesNotExistsException();
         }
         userrepo.deleteById(id);
