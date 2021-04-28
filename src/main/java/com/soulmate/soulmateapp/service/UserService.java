@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface UserService {
 
-    public SoulmateUser saveUser(SoulmateUser user) throws UserAlreadyExistsException;
-    public List<SoulmateUser> getAllUsers();
-    public SoulmateUser updateUser(Integer id, SoulmateUser user);
-    public void deleteUser(int id) throws UserDoesNotExistsException;
-    public List<SoulmateUser> getAllUsersbyGender(String gender);
-    public List<SoulmateUser> getAllUsersbyAge(int age);
-    public List<SoulmateUser> getAllUsersbyName(String name);
+    public SoulmateUser saveUser(SoulmateUser user) throws UserAlreadyExistsException, Exception;
+    public List<SoulmateUser> getAllUsers() throws Exception;
+    public SoulmateUser updateUser(Integer id, SoulmateUser user) throws Exception;
+    public void deleteUser(int id) throws UserDoesNotExistsException, Exception;
+    public List<SoulmateUser> getAllUsersbyGender(String gender) throws Exception;
+    public List<SoulmateUser> getAllUsersbyAge(int age) throws Exception;
+    public List<SoulmateUser> getAllUsersbyName(String name) throws Exception;
 
 
 
