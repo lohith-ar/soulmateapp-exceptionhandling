@@ -2,6 +2,7 @@ package com.soulmate.soulmateapp.Controller;
 
 import com.soulmate.soulmateapp.domain.SoulmateUser;
 import com.soulmate.soulmateapp.exceptionhandler.UserAlreadyExistsException;
+import com.soulmate.soulmateapp.exceptionhandler.UserDoesNotExistsException;
 import com.soulmate.soulmateapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,7 +59,7 @@ public class UserController {
     }
 
     @DeleteMapping("/deleteuser/{id}")
-    public String deleteUser(@PathVariable(value="id") Integer id1){
+    public String deleteUser(@PathVariable(value="id") Integer id1) throws UserDoesNotExistsException {
        userService.deleteUser(id1);
        return "Deleted";
     }

@@ -2,6 +2,7 @@ package com.soulmate.soulmateapp.service;
 
 import com.soulmate.soulmateapp.domain.SoulmateUser;
 import com.soulmate.soulmateapp.exceptionhandler.UserAlreadyExistsException;
+import com.soulmate.soulmateapp.exceptionhandler.UserDoesNotExistsException;
 import com.soulmate.soulmateapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,8 +41,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(int id) throws UserDoesNotExistsException {
         Optional<SoulmateUser> user1= userrepo.findById(id);
+        if(user1 == null){
+            throw new UserDoesNotExistsException();
+        }
         userrepo.deleteById(id);
     }
 

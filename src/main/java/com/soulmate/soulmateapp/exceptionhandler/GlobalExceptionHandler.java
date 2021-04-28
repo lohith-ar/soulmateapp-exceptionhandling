@@ -13,9 +13,17 @@ public class GlobalExceptionHandler {
     @Value(value = "${data.exception.message1}")
     private String message1;
 
+    @Value(value = "${data.exception.message2}")
+    private String message2;
+
     @ExceptionHandler( value = UserAlreadyExistsException.class)
-    public ResponseEntity<String> userAlreadyExists (UserAlreadyExistsException userExists){
-        return new ResponseEntity<String>("User already existing", HttpStatus.CONFLICT);
+    public ResponseEntity<String> userAlreadyExists (){
+        return new ResponseEntity<String>( message1, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(value = UserDoesNotExistsException.class)
+    public ResponseEntity<String> userDoesnotExist(){
+        return new ResponseEntity<String>(message2, HttpStatus.OK);
     }
 
 
